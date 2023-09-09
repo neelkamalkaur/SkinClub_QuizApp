@@ -3,7 +3,9 @@ import { user_allergic_data } from './UserAllergicData'
 import { useNavigate } from 'react-router-dom';
 import UserSym from '../UserSymDetails/UserSym';
 
+
 import InputTypeSelect from '../Madication_Prescription/InputTypeSelect';
+import { useAllergicInfoContext } from '../../GlobalContext/userAllergicInfoContext';
 
 
 export default function UserAllergicInfo() {
@@ -16,6 +18,7 @@ export default function UserAllergicInfo() {
   const [step, setStep] = useState(1);
   const [renderData, setRenderData] = useState(allergicData.slice(0, 1));
   const navigate = useNavigate();
+  const {state , dispatch} = useAllergicInfoContext();
 
   const getSymptumDetails = (e) => {};
 
@@ -25,6 +28,8 @@ export default function UserAllergicInfo() {
     });
 
     if(step>=allergicData.length){
+      await   dispatch({ type: 'ADD_USER_ALLERGIC_INFO_DATA', payload:  userAllergicDetails});
+
         navigate('/healthdiagonosedinfo');
     }
 
@@ -34,6 +39,7 @@ export default function UserAllergicInfo() {
     });
   };
 
+  console.log(userAllergicDetails);
   return (
  <>
 

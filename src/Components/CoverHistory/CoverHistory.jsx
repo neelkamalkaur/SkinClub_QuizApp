@@ -1,7 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUserPrescriptionContext } from '../../GlobalContext/userInputPrescription';
+
 
 export default function CoverHistory() {
+
+  const {state} = useUserPrescriptionContext();
+
+  console.log(state.data);
 
 
     const navigate = useNavigate();

@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 
-const InputTypeSelect = ({setStep , question , helperText ,handleRenderComponent }) => {
+const InputTypeSelect = ({  question , helperText ,handleRenderComponent }) => {
 
     
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState({
+      ques :"",
+      ans :"",
+    });
 
-    const handleInputChange =()=>{
-        setValue(event.target.value);
+    const handleInputChange =(event)=>{
+
+
+        setValue((prevState)=>({
+          ...prevState,
+
+          ques: question,
+            ans : event.target.value,
+        }));
     }
 
 
@@ -29,7 +39,7 @@ const InputTypeSelect = ({setStep , question , helperText ,handleRenderComponent
            </select>
         </div>
 
-        <button onClick={() => handleRenderComponent()}>Continue</button>
+        <button onClick={() => handleRenderComponent(value)}>Continue</button>
       </div>
     </>
   );

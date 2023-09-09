@@ -2,6 +2,7 @@ export const user_allergic_data = [
 {
     id:1,
     question : "Are you allergic to any medications?",
+    option_type:"singal_option",
     options :[
        {
         id : 1,
@@ -64,6 +65,7 @@ export const user_allergic_data = [
     id:3,
     question : "How often do you have a drink containing alcohol?",
     helper_text :"Alcohol can impact your skin health and your potential reaction to certain medications.",
+    option_type:"singal_option",
 
     options :[
        {
@@ -96,6 +98,7 @@ export const user_allergic_data = [
     id:4,
     question : "How many standard drinks containing alcohol do you have on a typical day when you drink?",
     helper_text :"Alcohol can impact your skin health and your potential reaction to certain medications.",
+    option_type:"singal_option",
 
     options :[
        {
@@ -124,9 +127,10 @@ export const user_allergic_data = [
 },
 
 {
-    id:4,
+    id:5,
     question : "How often do you smoke cigarettes?",
     // helper_text :"Alcohol can impact your skin health and your potential reaction to certain medications.",
+    option_type:"singal_option",
 
     options :[
        {
@@ -156,7 +160,7 @@ export const user_allergic_data = [
 
 
 {
-    id:5,
+    id:6,
     question : "Please select any of the following that are true.",
    
 helper_text:"Certain inflammatory conditions can be associated with skin conditions so we like to screen for those symptoms.",

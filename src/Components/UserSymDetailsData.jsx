@@ -3,6 +3,7 @@ export const symData = [
     id: 1,
     question:
       "Where on your body do you experience eczema (atopic dermatitis)?",
+  
     options: [
       {
         id: 1,
@@ -43,6 +44,7 @@ export const symData = [
   {
     id: 2,
     question: "How long have you been experiencing eczema?",
+    option_type: "singal_option",
     options: [
       {
         id: 1,
@@ -66,6 +68,7 @@ export const symData = [
   {
     id: 3,
     question: "How frequently do you experience eczema?",
+    option_type: "singal_option",
     options: [
       {
         id: 1,
@@ -114,6 +117,7 @@ export const symData = [
   {
     id: 5,
     question: "How frequently do you experience eczema?",
+    option_type: "singal_option",
     options: [
       {
         id: 1,

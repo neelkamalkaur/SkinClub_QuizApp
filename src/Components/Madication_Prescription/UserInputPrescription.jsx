@@ -3,6 +3,7 @@ import { prescription_choice } from "./UserInputPrescriptionData";
 import { useNavigate } from "react-router-dom";
 import InputTypeSelect from "./InputTypeSelect";
 import UserSym from "../UserSymDetails/UserSym";
+import { useUserPrescriptionContext } from "../../GlobalContext/userInputPrescription";
 
 export default function UserInputPrescription() {
   const [userPrescriptionDetails, setUserPrescriptionDetails] = useState([]);
@@ -15,12 +16,17 @@ export default function UserInputPrescription() {
 
   const getSymptumDetails = (e) => {};
 
+  const {state , dispatch} = useUserPrescriptionContext();
+
   const handleRenderComponent = async (data) => {
     await setStep((step) => {
       return step + 1;
     });
 
     if(step>=prescriptionData.length){
+
+        dispatch({ type:'ADD_USER_INPUT_PRESCRIPTION_DATA', payload:  userPrescriptionDetails})
+
         navigate('/coverhistory');
     }
 
@@ -30,9 +36,10 @@ export default function UserInputPrescription() {
     });
   };
 
+  console.log(userPrescriptionDetails);
   return (
     <>
-      <h1>User Input Prescription</h1>
+
 
       {renderData.map((data, index) => {
         return (

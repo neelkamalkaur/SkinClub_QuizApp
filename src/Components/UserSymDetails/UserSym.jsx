@@ -1,20 +1,31 @@
 import React, { useState } from "react";
 
 export default function UserSym({
+ 
   handleRenderComponent,
+ 
   question,
   options,
   option_type,
   facet,
-  getSymptumDetails,
+
   input_type,
   helperText,
+ 
 }) {
+
+
+
   let isInputTypeText = false;
 
   if (input_type == "text_area") {
     isInputTypeText = true;
   }
+
+  const [textAreaData, setTextAreaData] = useState({
+    ques: "",
+    ans: "",
+  });
 
   const [checkedOptions, setCheckedOptions] = useState({});
 
@@ -38,14 +49,24 @@ export default function UserSym({
       checked_option: [],
     });
     setCheckedOptions({});
+
+    await setTextAreaData({
+      ques: "",
+      ans: "",
+    })
+
   };
 
   const setSymData = async (e, question, option_type = "multi_option") => {
     if (option_type === "singal_option") {
+      
+      
       let data = {
         option_name: e.target.name,
         value: e.target.checked,
       };
+
+      
 
       await setSymInputData({
         ...symInputData,
@@ -59,7 +80,6 @@ export default function UserSym({
     } else {
       if (!e.target.checked) {
         let newData = symInputData.checked_option.filter((data) => {
-          console.log(data.option_name, e.target.name);
           return data.option_name != e.target.name;
         });
 
@@ -88,8 +108,10 @@ export default function UserSym({
     }
   };
 
+ 
   return (
     <>
+   
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-12">
@@ -101,15 +123,23 @@ export default function UserSym({
             {isInputTypeText ? (
               <div>
                 <div>
-                  <textarea></textarea>
+                  <textarea 
+                  value={textAreaData.ans}
+                    onChange={async (e) => {
+                      await setTextAreaData((prevState) => ({
+                        ...prevState,
+
+                        ques: question,
+                        ans: e.target.value,
+                      }));
+                    }}
+                  ></textarea>
                 </div>
                 <button
                   onClick={async () => {
                     radioValue = null;
 
-                    await resetSymInputData(); // Reset the state
-
-                    handleRenderComponent();
+                    handleRenderComponent(textAreaData);
                   }}
                 >
                   Next
@@ -176,9 +206,10 @@ export default function UserSym({
                     onClick={async () => {
                       radioValue = null;
 
-                      await resetSymInputData(); // Reset the state
+                      // await resetSymInputData(); // Reset the state
+                     handleRenderComponent(symInputData);
 
-                      handleRenderComponent();
+                    ;
                     }}
                   >
                     Button

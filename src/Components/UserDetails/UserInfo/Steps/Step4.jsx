@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function Step4({setUserInfo}) {
+export default function Step4({setUserInfo,setUserInfoData}) {
 
 const navigate = useNavigate();
 
@@ -58,7 +58,11 @@ const navigate = useNavigate();
                 <div class="d-grid py-2 ">
                 <button class="btn btn-block btn-black rounded-pill py-2" onClick={()=>{
 
-                        navigate("/usersymdetails")
+                    setUserInfoData();
+
+             
+                      
+                
 
 
                 }}>Continue Consultation</button>

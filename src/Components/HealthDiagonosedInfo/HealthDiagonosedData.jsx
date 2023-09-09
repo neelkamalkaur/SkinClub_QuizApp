@@ -8,7 +8,7 @@ export const diagonosed_choice = [
     question: "Have you been diagnosed with any health condition?",
     helper_text:
       "Certain medications cannot be safely prescribed with certain conditions so this is important for your medical provider to know.",
-   option_type:"singal_option",
+    option_type:"singal_option",
     options: [
       {
         id: 1,

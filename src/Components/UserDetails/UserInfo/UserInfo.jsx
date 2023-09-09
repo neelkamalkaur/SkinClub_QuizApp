@@ -3,9 +3,15 @@ import Step1 from './Steps/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 import Step4 from './Steps/Step4';
+import { useInfoContext } from '../../../GlobalContext/userInfoContext1';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function UserInfo() {
+
+    const { state, dispatch } = useInfoContext();
+    const navigate = useNavigate();
+
 
 
     const [step, setStep] = useState(1);
@@ -21,6 +27,16 @@ export default function UserInfo() {
             dob: "",
         }
     )
+
+    const setUserInfoData = async()=>{
+        console.log('Set User Info');
+
+      await   dispatch({ type: 'ADD_USERINFO_DATA', payload: userInfo });
+
+
+        navigate("/usersymdetails")
+
+    }
 
     console.log(userInfo);
 
@@ -53,7 +69,7 @@ export default function UserInfo() {
 
             <div>
                 {
-                    step === 4 && <Step4 setStep={setStep} setUserInfo={setUserInfo} />
+                    step === 4 && <Step4 setStep={setStep} setUserInfo={setUserInfo} setUserInfoData={setUserInfoData}/>
                 }
 
             </div>
